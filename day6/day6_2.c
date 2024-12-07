@@ -151,7 +151,7 @@ int main()
                 int dx, dy;
                 get_dx_dy_for_direction(&dx, &dy, current_direction);
 
-                if (visit_count[current_row][current_col] > 20) // lmfao
+                if (visit_count[current_row][current_col] > 20) // lmfao they HAVE to be in a loop now right ??
                 {
                     valid_obstacle_combinations++;
                     break; // loop detected
