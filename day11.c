@@ -92,8 +92,8 @@ struct LLNode *convert_to_linked_list(int *arr, int length)
 int main()
 {
     // initial linked list
-    int arr[] = {5}; //, 89749, 6061, 43, 867, 1965860, 0, 206250};
-    struct LLNode *head = convert_to_linked_list(arr, 1);
+    int arr[] = {89749, 6061, 43, 867, 1965860, 0, 206250};
+    struct LLNode *head = convert_to_linked_list(arr, 8);
 
     for (int i = 0; i < 75; i++)
     {
