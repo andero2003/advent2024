@@ -92,6 +92,32 @@ int bounds_something_else(char *grid, int i, int j, int total_rows, int total_co
         }
     }
     return perimeter;
+};
+
+int get_max(int *arr, int n)
+{
+    int max = arr[0];
+    for (int i = 1; i < n; i++)
+    {
+        if (arr[i] > max)
+        {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+int get_min(int *arr, int n)
+{
+    int min = arr[0];
+    for (int i = 1; i < n; i++)
+    {
+        if (arr[i] < min)
+        {
+            min = arr[i];
+        }
+    }
+    return min;
 }
 
 int main()
@@ -99,7 +125,7 @@ int main()
     FILE *fptr;
     fptr = fopen("day12.txt", "r");
 
-    int total_rows = 140, total_columns = 140;
+    int total_rows = 10, total_columns = 10;
     char grid[total_rows][total_columns];
 
     char ch;
@@ -140,23 +166,17 @@ int main()
             search_from(&region, &mutated_grid, i, j, total_rows, total_columns);
 
             printf("Region %c: ", current_region);
-            for (int k = 0; k < region.num_coords; k++)
-            {
-                printf("(%d, %d) ", region.x_coords[k], region.y_coords[k]);
-            }
+            printf("Min x: %d, Max x: %d, Min y: %d, Max y: %d\n", get_min(region.x_coords, region.num_coords), get_max(region.x_coords, region.num_coords), get_min(region.y_coords, region.num_coords), get_max(region.y_coords, region.num_coords));
+            // for (int k = 0; k < region.num_coords; k++)
+            // {
+            //     printf("(%d, %d) ", region.x_coords[k], region.y_coords[k]);
+            // }
+            printf("\n");
 
             int area = region.num_coords;
-            int perimeter = 0;
-            for (int k = 0; k < region.num_coords; k++)
-            {
-                int x = region.x_coords[k];
-                int y = region.y_coords[k];
+            int sides = 0;
 
-                // up;
-                perimeter += bounds_something_else(&grid, x, y, total_rows, total_columns);
-            }
-
-            total_price += area * perimeter;
+            total_price += area * sides;
         }
     }
 
